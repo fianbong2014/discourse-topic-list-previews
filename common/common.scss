@@ -378,6 +378,7 @@ img.non-tiles-thumbnail {
           border-radius: 3px;
           grid-row-end: span 1;
           min-height: 190px;
+          overflow-y: hidden;
         }
 
         .topic-details {
