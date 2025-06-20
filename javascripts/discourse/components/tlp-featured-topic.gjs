@@ -48,21 +48,7 @@ export default class TlpFeaturedTopicComponent extends Component {
   <template>
     <a href={{this.href}} class="tlp-featured-topic {{this.featuredTag}}">
       <div class={{concatClass "featured-details" this.alwaysShowDetails}}>
-      
-        <div class="content">
-          <div class="title">
-            {{@topic.title}}
-          </div>
-          {{#if this.featuredExcerpt}}
-            <div class="excerpt">
-              {{htmlSafe this.featuredExcerpt}}
-            </div>
-          {{/if}}
-          <span class="user">
-            {{this.featuredUsername}}
-            {{avatar this.featuredUser imageSize="small"}}
-          </span>
-        </div>
+        
       </div>
     </a>
   </template>
