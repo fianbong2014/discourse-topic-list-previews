@@ -112,11 +112,8 @@ export default class TlpFeaturedTopicsComponent extends Component {
             {{this.featuredTitle}}
           </div>
         {{/if}}
-        <div>Test --- </div>
         <div class="topics">
-          {{#each this.featuredTopics as |t|}}
-            <TlpFeaturedTopic @topic={{t}} />
-          {{/each}}
+          
         </div>
         {{#if this.showFeaturedTags}}
           <div class="featured-tags">
