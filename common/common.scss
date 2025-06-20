@@ -385,6 +385,7 @@ img.non-tiles-thumbnail {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          overflow-y:hidden;
 
           .topic-users {
             justify-content: center;
