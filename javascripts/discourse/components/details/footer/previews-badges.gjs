@@ -69,9 +69,7 @@ export default class PreviewsBadgesComponent extends Component {
                         imageSize="small"
                     }}
                     </a>
-                    <span class="topic-user-badge">
-                        <span class="topic-badge-name">Creator</span>
-                    </span>
+                    
                     {{#if this.badges.length}}
                         
                         
