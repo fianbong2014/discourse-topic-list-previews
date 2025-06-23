@@ -63,6 +63,7 @@ export default class PreviewsBadgesComponent extends Component {
                     data-user-card={{this.creator.user.username}}
                     class={{this.creator.extras}}
                     >
+                    <span class="topic-creator">{{this.creator.user.username}}</span>
                     {{avatar
                         this.creator
                         avatarTemplatePath="user.avatar_template"
