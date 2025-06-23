@@ -254,3 +254,8 @@ topic_list_fps_search_author:
 badge_api_url:
   type: string
   default: ''
+poster_limit:
+  default: 6
+  type: integer
+  description:
+    en: "Limit poster"

@@ -21,29 +21,6 @@ export default class PreviewsBadgesComponent extends Component {
   }
 
 
-  get abbrieviatedPosters() {
-    let abbreviatedPosters = [];
-    if (this.args.topic.posters.length < 6) {
-      abbreviatedPosters = this.args.topic.posters;
-    } else {
-      this.args.topic.posters[0].count = false;
-      abbreviatedPosters.push(this.args.topic.posters[0]);
-      this.args.topic.posters[1].count = false;
-      abbreviatedPosters.push(this.args.topic.posters[1]);
-      let count = { count: this.args.topic.posters.length - 4 };
-      abbreviatedPosters.push(count);
-      this.args.topic.posters[this.args.topic.posters.length - 2].count = false;
-      abbreviatedPosters.push(
-        this.args.topic.posters[this.args.topic.posters.length - 2]
-      );
-      this.args.topic.posters[this.args.topic.posters.length - 1].count = false;
-      abbreviatedPosters.push(
-        this.args.topic.posters[this.args.topic.posters.length - 1]
-      );
-    }
-    return abbreviatedPosters;
-  }
-
 
   async loadBadges() {
     try {
@@ -52,8 +29,8 @@ export default class PreviewsBadgesComponent extends Component {
 
       
       
-      if(settings?.api_url){
-        const response = await fetch(`${settings?.api_url}/user/${username}/badges`);
+      if(settings?.badge_api_url){
+        const response = await fetch(`${settings?.badge_api_url}/user/${username}/badges`);
         if (!response.ok) {
           throw new Error(`Failed to fetch badges: ${response.status}`);
         }

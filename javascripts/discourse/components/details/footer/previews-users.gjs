@@ -4,10 +4,13 @@ import avatar from "discourse/helpers/avatar";
 export default class PreviewsUsers extends Component {
   get abbrieviatedPosters() {
     let abbreviatedPosters = [];
-    console.log(this.args.topic.posters)
+    //console.log(this.args.topic.posters)
 
     for(let i=1;i<this.args.topic.posters.length; i++){
-      abbreviatedPosters.push(this.args.topic.posters[i]);
+      if(i<=this.settings.poster_limit){
+        abbreviatedPosters.push(this.args.topic.posters[i]);
+      }
+      
     }
 
     /*if (this.args.topic.posters.length < 6) {
@@ -31,7 +34,9 @@ export default class PreviewsUsers extends Component {
         this.args.topic.posters[this.args.topic.posters.length - 1]
       );
     }*/
-    console.log(abbreviatedPosters)
+
+
+    //console.log(abbreviatedPosters)
     return abbreviatedPosters;
   }
 
