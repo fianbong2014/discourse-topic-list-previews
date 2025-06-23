@@ -251,3 +251,6 @@ topic_list_fps_search_author:
   type: bool
   description:
     en: "Enable search author for full page search"
+badge_api_url:
+  type: string
+  default: ''
