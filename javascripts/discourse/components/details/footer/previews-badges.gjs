@@ -91,23 +91,26 @@ export default class PreviewsBadgesComponent extends Component {
                     imageSize="small"
                 }}
                 </a>
-                {{#if this.badges.length}}
-                    <span class="topic-user-badge-list">
+                <span class="topic-user-badge-list">
                     <span class="topic-user-badge">
                         <span class="topic-badge-name">Creator</span>
                     </span>
-                    {{#each this.badges as |badge|}}
-                        {{#if badge.allow_title}}
-                        <span class="topic-user-badge">
-                            {{#if badge.image_url}}
-                                <img src="{{badge.image_url}}" class="topic-badge-image" width="30" height="30" alt="{{badge.name}}"/>
+                    {{#if this.badges.length}}
+                        
+                        
+                        {{#each this.badges as |badge|}}
+                            {{#if badge.allow_title}}
+                            <span class="topic-user-badge">
+                                {{#if badge.image_url}}
+                                    <img src="{{badge.image_url}}" class="topic-badge-image" width="30" height="30" alt="{{badge.name}}"/>
+                                {{/if}}
+                                <span class="topic-badge-name">{{badge.name}}</span>
+                            </span>
                             {{/if}}
-                            <span class="topic-badge-name">{{badge.name}}</span>
-                        </span>
-                        {{/if}}
-                    {{/each}}
-                    </span>
-                {{/if}}
+                        {{/each}}
+                    
+                    {{/if}}
+                 </span>
             </div>
         </div>
     </template>
