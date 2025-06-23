@@ -270,6 +270,16 @@ img.non-tiles-thumbnail {
     padding-right: 0.67em;
   }
 
+  .topic-footer-badge {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-left: 0.67em;
+    padding-right: 0.67em;
+  }
+
   .topic-meta {
     flex: 1;
     vertical-align: middle;
