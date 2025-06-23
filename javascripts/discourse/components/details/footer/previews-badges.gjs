@@ -11,6 +11,10 @@ export default class PreviewsBadgesComponent extends Component {
 
   @tracked badges = []; // เก็บรายการ badge เพื่อแสดงใน template
 
+   get creator() {
+    return this.args.topic.creator
+   }
+
   get abbrieviatedPosters() {
     let abbreviatedPosters = [];
     if (this.args.topic.posters.length < 6) {
@@ -69,13 +73,7 @@ export default class PreviewsBadgesComponent extends Component {
     <template>
         <div class="topic-users">
             <div class="inline">
-                {{#each this.abbrieviatedPosters as |poster|}}
-                    {{#if poster.count}}
-                        ({{poster.count}})
-                    {{else}}
-                        ({{poster.user.username}})
-                    {{/if}}
-                {{/each}}
+                ({{this.creator.username}})
             </div>
         </div>
     </template>
