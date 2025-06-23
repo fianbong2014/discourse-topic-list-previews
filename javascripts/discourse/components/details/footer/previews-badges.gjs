@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
+import avatar from "discourse/helpers/avatar";
 
 
 export default class PreviewsBadgesComponent extends Component {
@@ -13,7 +14,7 @@ export default class PreviewsBadgesComponent extends Component {
 
    get creator() {
     console.log(this.args.topic);
-    return this.args.topic.creator
+    return this.args.topic.posters[0];
    }
 
   get abbrieviatedPosters() {
@@ -74,7 +75,18 @@ export default class PreviewsBadgesComponent extends Component {
     <template>
         <div class="topic-users">
             <div class="inline">
-                {{this.creator.username}}
+                <a
+                href={{this.creator.user.path}}
+                data-user-card={{this.creator.user.username}}
+                class={{this.creator.extras}}
+                >
+                {{avatar
+                    this.creator
+                    avatarTemplatePath="user.avatar_template"
+                    usernamePath="user.username"
+                    imageSize="small"
+                }}
+                </a>
             </div>
         </div>
     </template>
