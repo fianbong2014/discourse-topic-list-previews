@@ -73,7 +73,18 @@ export default class PreviewsBadgesComponent extends Component {
     <template>
         <div class="topic-users">
             <div class="inline">
-                ({{this.creator.username}})
+                <a
+                href={{this.creator.path}}
+                data-user-card={{this.creator.username}}
+                class={{poster.extras}}
+                >
+                    {{avatar
+                        poster
+                        avatarTemplatePath="this.creator.avatar_template"
+                        usernamePath="this.creator.username"
+                        imageSize="small"
+                    }}
+                </a>
             </div>
         </div>
     </template>
