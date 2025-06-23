@@ -770,3 +770,10 @@ img.select-thumbnail-preview {
     }
   }
 }
+
+.topic-user-badge-list {
+  display: flex;
+  justify-content:start;
+  align-items: center;
+  gap: 5px;
+}
