@@ -8,4 +8,7 @@ import PreviewsUsers from "./footer/previews-users";
     <PreviewsUsers @topic={{@topic}} />
     <PreviewsActions @topic={{@topic}} />
   </div>
+  <div>
+    Badges: 
+  </div>
 </template>
