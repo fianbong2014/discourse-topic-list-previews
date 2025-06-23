@@ -1,6 +1,7 @@
 import PreviewsActions from "./footer/previews-actions";
 import PreviewsMeta from "./footer/previews-meta";
 import PreviewsUsers from "./footer/previews-users";
+import PreviewsBadges from "./footer/previews-badges";
 
 <template>
   <div class="topic-footer">
@@ -9,6 +10,6 @@ import PreviewsUsers from "./footer/previews-users";
     <PreviewsActions @topic={{@topic}} />
   </div>
   <div class="topic-footer-badge">
-    Badges: 
+    <PreviewsBadges @topic={{@topic}} /> 
   </div>
 </template>

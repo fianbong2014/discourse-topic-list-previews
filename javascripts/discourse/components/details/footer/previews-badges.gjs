@@ -1,0 +1,82 @@
+import Component from "@glimmer/component";
+import { tracked } from "@glimmer/tracking";
+import { action } from "@ember/object";
+import { service } from "@ember/service";
+
+
+export default class PreviewsBadgesComponent extends Component {
+  @service siteSettings;
+  @service currentUser;
+  @service modal;
+
+  @tracked badges = []; // เก็บรายการ badge เพื่อแสดงใน template
+
+  get abbrieviatedPosters() {
+    let abbreviatedPosters = [];
+    if (this.args.topic.posters.length < 6) {
+      abbreviatedPosters = this.args.topic.posters;
+    } else {
+      this.args.topic.posters[0].count = false;
+      abbreviatedPosters.push(this.args.topic.posters[0]);
+      this.args.topic.posters[1].count = false;
+      abbreviatedPosters.push(this.args.topic.posters[1]);
+      let count = { count: this.args.topic.posters.length - 4 };
+      abbreviatedPosters.push(count);
+      this.args.topic.posters[this.args.topic.posters.length - 2].count = false;
+      abbreviatedPosters.push(
+        this.args.topic.posters[this.args.topic.posters.length - 2]
+      );
+      this.args.topic.posters[this.args.topic.posters.length - 1].count = false;
+      abbreviatedPosters.push(
+        this.args.topic.posters[this.args.topic.posters.length - 1]
+      );
+    }
+    return abbreviatedPosters;
+  }
+
+
+  async loadBadges() {
+    try {
+      const username = this.args.topic.creator.username;
+      //const apiUrl = settings; // get from args or settings
+
+      
+      
+      if(settings?.api_url){
+        const response = await fetch(`${settings?.api_url}/user/${username}/badges`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch badges: ${response.status}`);
+        }
+        const result = await response.json();
+
+        // console.log(username, result);
+
+        if (result.success) {
+          this.badges = result.data;
+        }
+      }
+      
+    } catch (error) {
+      console.error(error);
+      this.badges = [];
+      // Retry after 2 seconds
+      // setTimeout(() => this.loadBadges(), 2000);
+    }
+    
+  }
+
+
+    <template>
+        <div class="topic-users">
+            <div class="inline">
+                {{#each this.abbrieviatedPosters as |poster|}}
+                    {{#if poster.count}}
+                        ({{poster.count}})
+                    {{else}}
+                        ({{poster.user.username}})
+                    {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </template>
+}
