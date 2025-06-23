@@ -6,11 +6,9 @@ export default class PreviewsUsers extends Component {
     let abbreviatedPosters = [];
     //console.log(this.args.topic.posters)
 
+
     for(let i=1;i<this.args.topic.posters.length; i++){
-      if(i<=this.settings.poster_limit){
-        abbreviatedPosters.push(this.args.topic.posters[i]);
-      }
-      
+       abbreviatedPosters.push(this.args.topic.posters[i]);
     }
 
     /*if (this.args.topic.posters.length < 6) {
