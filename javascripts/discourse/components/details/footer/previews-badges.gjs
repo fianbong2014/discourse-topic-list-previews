@@ -12,6 +12,7 @@ export default class PreviewsBadgesComponent extends Component {
   @tracked badges = []; // เก็บรายการ badge เพื่อแสดงใน template
 
    get creator() {
+    console.log(this.args.topic);
     return this.args.topic.creator
    }
 
@@ -73,7 +74,7 @@ export default class PreviewsBadgesComponent extends Component {
     <template>
         <div class="topic-users">
             <div class="inline">
-                User
+                {{this.creator.username}}
             </div>
         </div>
     </template>
