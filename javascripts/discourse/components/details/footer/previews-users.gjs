@@ -5,15 +5,23 @@ export default class PreviewsUsers extends Component {
   get abbrieviatedPosters() {
     let abbreviatedPosters = [];
     console.log(this.args.topic.posters)
-    if (this.args.topic.posters.length < 6) {
+
+    for(let i=1;i<this.args.topic.posters.length; i++){
+      abbreviatedPosters.push(this.args.topic.posters[i]);
+    }
+
+    /*if (this.args.topic.posters.length < 6) {
       abbreviatedPosters = this.args.topic.posters;
     } else {
-      //this.args.topic.posters[0].count = false;
-      //abbreviatedPosters.push(this.args.topic.posters[0]);
+      this.args.topic.posters[0].count = false;
+      abbreviatedPosters.push(this.args.topic.posters[0]);
+
       this.args.topic.posters[1].count = false;
       abbreviatedPosters.push(this.args.topic.posters[1]);
+
       let count = { count: this.args.topic.posters.length - 3 };
       abbreviatedPosters.push(count);
+
       this.args.topic.posters[this.args.topic.posters.length - 2].count = false;
       abbreviatedPosters.push(
         this.args.topic.posters[this.args.topic.posters.length - 2]
@@ -22,7 +30,7 @@ export default class PreviewsUsers extends Component {
       abbreviatedPosters.push(
         this.args.topic.posters[this.args.topic.posters.length - 1]
       );
-    }
+    }*/
     console.log(abbreviatedPosters)
     return abbreviatedPosters;
   }
