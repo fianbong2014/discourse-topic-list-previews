@@ -11,11 +11,15 @@ export default class PreviewsBadgesComponent extends Component {
   @service modal;
 
   @tracked badges = []; // เก็บรายการ badge เพื่อแสดงใน template
+  @tracked creator;
 
-   get creator() {
-    console.log(this.args.topic);
-    return this.args.topic.posters[0];
-   }
+  constructor() {
+    super(...arguments);
+    this.creator = this.args.topic.posters[0];
+    this.loadBadges(); // โหลด badges เมื่อ component ถูกเรียก
+    
+  }
+
 
   get abbrieviatedPosters() {
     let abbreviatedPosters = [];
@@ -87,6 +91,20 @@ export default class PreviewsBadgesComponent extends Component {
                     imageSize="small"
                 }}
                 </a>
+                {{#if this.badges.length}}
+                    <span class="topic-user-badge-list">
+                    {{#each this.badges as |badge|}}
+                        {{#if badge.allow_title}}
+                        <span class="topic-user-badge">
+                            {{#if badge.image_url}}
+                                <img src="{{badge.image_url}}" class="topic-badge-image" width="30" height="30" alt="{{badge.name}}"/>
+                            {{/if}}
+                            <span class="topic-badge-name">{{badge.name}}</span>
+                        </span>
+                        {{/if}}
+                    {{/each}}
+                    </span>
+                {{/if}}
             </div>
         </div>
     </template>
