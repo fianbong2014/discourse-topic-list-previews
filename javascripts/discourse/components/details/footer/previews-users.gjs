@@ -8,7 +8,7 @@ export default class PreviewsUsers extends Component {
       abbreviatedPosters = this.args.topic.posters;
     } else {
       this.args.topic.posters[0].count = false;
-      abbreviatedPosters.push(this.args.topic.posters[0]);
+      //abbreviatedPosters.push(this.args.topic.posters[0]);
       this.args.topic.posters[1].count = false;
       abbreviatedPosters.push(this.args.topic.posters[1]);
       let count = { count: this.args.topic.posters.length - 4 };
