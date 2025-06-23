@@ -93,6 +93,9 @@ export default class PreviewsBadgesComponent extends Component {
                 </a>
                 {{#if this.badges.length}}
                     <span class="topic-user-badge-list">
+                    <span class="topic-user-badge">
+                        <span class="topic-badge-name">Creator</span>
+                    </span>
                     {{#each this.badges as |badge|}}
                         {{#if badge.allow_title}}
                         <span class="topic-user-badge">
