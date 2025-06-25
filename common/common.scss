@@ -390,6 +390,7 @@ img.non-tiles-thumbnail {
           border-radius: 3px;
           grid-row-end: span 1;
           min-height: 190px;
+          height: auto;
           overflow-y: hidden;
         
         }
@@ -577,6 +578,7 @@ button.list-button {
 
         img.thumbnail {
           min-height: var(--featured-thumbnail-height);
+          height: auto;
           width: auto;
           z-index: 0;
         }
