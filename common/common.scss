@@ -147,7 +147,7 @@ img.non-tiles-thumbnail {
   .topic-list-item,
   tr {
     border: none;
-    overflow-y: hidden;
+    overflow-y: auto;
   }
 
   .topic-list-data:first-of-type {
