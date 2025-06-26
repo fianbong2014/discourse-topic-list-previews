@@ -147,6 +147,7 @@ img.non-tiles-thumbnail {
   .topic-list-item,
   tr {
     height: auto;
+    max-height: 300px;
     border: none;
     overflow-y: hidden;
     overflow-x: hidden;
