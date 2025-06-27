@@ -153,9 +153,9 @@ img.non-tiles-thumbnail {
     
     // เมื่อมี class has-excerpt
     &.has-excerpt {
-      grid-row-end: span 18 !important;
+      grid-row-end: span 22 !important;
       &.has-thumpnail {
-        grid-row-end: span 32 !important;
+        grid-row-end: span 36 !important;
       }
     }
     &:not(.has-excerpt){
