@@ -150,21 +150,9 @@ img.non-tiles-thumbnail {
     overflow-y: hidden;
     overflow-x: hidden;
     max-height: 320px !important;
-    grid-row-end: span 16 !important;
+    grid-row-end: auto;
     
-    // เมื่อมี class has-excerpt
-    &.has-excerpt {
-      grid-row-end: span 18 !important;
-      &.has-thumpnail {
-        grid-row-end: span 32 !important;
-      }
-    }
-    &:not(.has-excerpt){
-      &.has-thumpnail {
-      grid-row-end: span 16 !important;
-    }
-    }
-    
+  
 
   }
 
