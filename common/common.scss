@@ -149,8 +149,22 @@ img.non-tiles-thumbnail {
     border: none;
     overflow-y: hidden;
     overflow-x: hidden;
-    height: auto !important;
-    /* grid-row-end: span 16 !important; */
+    grid-row-end: span 8 !important;
+    
+    // เมื่อมี class has-excerpt
+    &.has-excerpt {
+      grid-row-end: span 16;
+      &.has-thumpnail {
+        grid-row-end: span 32;
+      }
+    }
+    &:not(.has-excerpt){
+      &.has-thumpnail {
+      grid-row-end: span 16;
+    }
+    }
+    
+
   }
 
 
