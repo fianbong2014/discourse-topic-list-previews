@@ -149,7 +149,9 @@ img.non-tiles-thumbnail {
     border: none;
     overflow-y: hidden;
     overflow-x: hidden;
+    grid-row-end: span 15;
   }
+
 
   .topic-list-data:first-of-type {
     padding-left: 0;
