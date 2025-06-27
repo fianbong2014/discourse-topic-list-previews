@@ -16,7 +16,7 @@ export default class PreviewsBadgesComponent extends Component {
   constructor() {
     super(...arguments);
     this.creator = this.args.topic.posters[0];
-    console.log(this.args.topic)
+    //console.log(this.args.topic)
     this.loadBadges(); // โหลด badges เมื่อ component ถูกเรียก
     
   }
