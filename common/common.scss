@@ -149,6 +149,7 @@ img.non-tiles-thumbnail {
     border: none;
     overflow-y: hidden;
     overflow-x: hidden;
+    height: auto;
     grid-row-end: span 16 !important;
   }
 
