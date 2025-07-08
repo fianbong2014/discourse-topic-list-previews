@@ -4,6 +4,7 @@ import { withSilencedDeprecations } from "discourse/lib/deprecated";
 import loadScript from "discourse/lib/load-script";
 import { resizeAllGridItems } from "../lib/gridupdate";
 import PreviewsDetails from "./../components/previews-details";
+import PreviewsTopics from "./../components/previews-topic";
 import PreviewsThumbnail from "./../components/previews-thumbnail";
 import PreviewsTilesThumbnail from "./../components/previews-tiles-thumbnail";
 
@@ -14,6 +15,10 @@ const previewsTilesThumbnail = <template>
     @url={{@topic.url}}
     @thumbnails={{@topic.thumbnails}}
   />
+</template>;
+
+const previewsTopic = <template>
+  <PreviewsTopics @topic={{@topic}} />
 </template>;
 
 const previewsDetails = <template>
@@ -214,14 +219,14 @@ export default apiInitializer("0.8", (api) => {
       columns.add(
         "previews-thumbnail",
         { item: previewsTilesThumbnail },
-        { after: "topic" }
+        { before: "topic" }
       );
     }
     if (topicListPreviewsService.displayTiles) {
       columns.add(
         "previews-details",
         { item: previewsDetails },
-        { before: "topic" }
+        { after: "topic" }
       );
     }
     return columns;
