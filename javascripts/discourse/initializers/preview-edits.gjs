@@ -212,6 +212,13 @@ export default apiInitializer("0.8", (api) => {
   });
 
   api.registerValueTransformer("topic-list-columns", ({ value: columns }) => {
+
+    columns.add(
+        "previews-topic",
+        { item: PreviewsTopics },
+        { after: "topic" }
+      );
+
     if (
       topicListPreviewsService.displayTiles &&
       topicListPreviewsService.displayThumbnails
