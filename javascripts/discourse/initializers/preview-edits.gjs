@@ -12,7 +12,7 @@ const PLUGIN_ID = "discourse-tc-topic-list-previews";
 
 const previewsTilesThumbnail = <template>
 
-  <PreviewsTopics @topic={{@topic}} />
+  
   <PreviewsTilesThumbnail
     @url={{@topic.url}}
     @thumbnails={{@topic.thumbnails}}
