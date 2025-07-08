@@ -3,6 +3,7 @@ import PreviewsExcerpt from "./details/previews-excerpt";
 import PreviewsFooter from "./details/previews-footer";
 
 <template>
+  <div>top</div>
   <div class="topic-details">
     <ItemTopicCell @topic={{@topic}} />
     <div>Test1</div>
