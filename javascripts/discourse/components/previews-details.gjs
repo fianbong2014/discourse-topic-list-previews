@@ -5,8 +5,10 @@ import PreviewsFooter from "./details/previews-footer";
 <template>
   <div class="topic-details">
     <ItemTopicCell @topic={{@topic}} />
+    <div>Test1</div>
     <PreviewsExcerpt @topic={{@topic}} />
-    <div>Test</div>
+    <div>Test2</div>
     <PreviewsFooter @topic={{@topic}} />
+    <div>Test3</div>
   </div>
 </template>
