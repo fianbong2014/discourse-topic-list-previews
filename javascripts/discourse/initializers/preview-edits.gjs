@@ -214,14 +214,14 @@ export default apiInitializer("0.8", (api) => {
       columns.add(
         "previews-thumbnail",
         { item: previewsTilesThumbnail },
-        { before: "topic" }
+        { after: "topic" }
       );
     }
     if (topicListPreviewsService.displayTiles) {
       columns.add(
         "previews-details",
         { item: previewsDetails },
-        { after: "topic" }
+        { before: "topic" }
       );
     }
     return columns;
