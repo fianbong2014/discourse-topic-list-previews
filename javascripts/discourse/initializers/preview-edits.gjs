@@ -11,17 +11,13 @@ import PreviewsTilesThumbnail from "./../components/previews-tiles-thumbnail";
 const PLUGIN_ID = "discourse-tc-topic-list-previews";
 
 const previewsTilesThumbnail = <template>
-
-  
   <PreviewsTilesThumbnail
     @url={{@topic.url}}
     @thumbnails={{@topic.thumbnails}}
   />
 </template>;
 
-const previewsTopic = <template>
-  <PreviewsTopics @topic={{@topic}} />
-</template>;
+
 
 const previewsDetails = <template>
   <PreviewsDetails @topic={{@topic}} />
