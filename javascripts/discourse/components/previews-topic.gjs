@@ -2,7 +2,6 @@ import Component from "@glimmer/component";
 import { htmlSafe } from "@ember/template";
 import PluginOutlet from "discourse/components/plugin-outlet";
 import lazyHash from "discourse/helpers/lazy-hash";
-import { formatAge } from "discourse/lib/formatter"; // ใช้แสดงเวลาย่อ ๆ เช่น "3h"
 import PreviewsBadges from "./footer/previews-badges";
 
 export default class TopicLink extends Component {
@@ -11,6 +10,19 @@ export default class TopicLink extends Component {
       ? this.args.topic.urlForPostNumber(this.args.topic.linked_post_number)
       : this.args.topic.lastUnreadUrl;
   }
+   get bookmarkClass() {
+    return this.args.topic.bookmarked ? "bookmarked" : "";
+  }
+
+  get bookmarkTitle() {
+    return this.args.topic.bookmarked ? "bookmarked" : "bookmark";
+  }
+
+  toggleBookmark() {
+    // TODO: เพิ่ม logic การ bookmark ตามที่ต้องการ
+    console.log("Toggle bookmark");
+  }
+
   <template>
     <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}} />
     <a href={{this.url}} data-topic-id={{@topic.id}} class="title" >
@@ -30,6 +42,8 @@ export default class TopicLink extends Component {
             </div>
           </div>
         </div>
+
+        
         <div class="save-icon">
           {{!-- <i>🔖</i> --}}
           <DButton
