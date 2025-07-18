@@ -10,12 +10,8 @@ export default class TopicLink extends Component {
       ? this.args.topic.urlForPostNumber(this.args.topic.linked_post_number)
       : this.args.topic.lastUnreadUrl;
   }
-
-  get lastPostedAt() {
-    return formatAge(this.args.topic.last_posted_at);
-  }
-
   <template>
+    {{~! no whitespace ~}}
     <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}} />
 
     <div class="custom-topic-card">
@@ -46,7 +42,6 @@ export default class TopicLink extends Component {
           🗨️ {{@topic.reply_count}} replies &nbsp;|&nbsp;
           👀 {{@topic.views}} views &nbsp;|&nbsp;
           👤 {{@topic.last_poster_username}} &nbsp;|&nbsp;
-          🕒 {{this.lastPostedAt}}
         </div>
       </a>
     </div>
