@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import PluginOutlet from "discourse/components/plugin-outlet";
 import lazyHash from "discourse/helpers/lazy-hash";
 import icon from "discourse/helpers/d-icon";
+import formatDate from "discourse/helpers/format-date";
 
 export default class TopicLink extends Component {
     get url() {
@@ -33,7 +34,7 @@ export default class TopicLink extends Component {
                     </div>
                 </div>
                 <div class="save-icon">
-                    {{d-icon "bookmark"}}
+                    {{icon "bookmark"}}
                     {{!-- <DButton
                       @action="toggleBookmark"
                       class={{concatClass
