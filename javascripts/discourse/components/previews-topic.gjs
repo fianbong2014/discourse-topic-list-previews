@@ -4,26 +4,19 @@ import lazyHash from "discourse/helpers/lazy-hash";
 import icon from "discourse/helpers/d-icon";
 import formatDate from "discourse/helpers/format-date";
 import avatar from "discourse/helpers/avatar";
-import PreviewsBadgesComponent from "./details/footer/previews-badges.gjs";
-// import PreviewsBadges from "./footer/previews-badges";
 
 export default class TopicLink extends Component {
+
+    constructor() {
+        super(...arguments);
+        console.log("Topic Data:", this.args.topic); // args.topic คือ @topic
+    }
     get url() {
         return this.args.topic.linked_post_number
             ? this.args.topic.urlForPostNumber(this.args.topic.linked_post_number)
             : this.args.topic.lastUnreadUrl;
     }
-
-    get abbrieviatedPosters() {
-        let abbreviatedPosters = [];
-        for(let i=1;i<this.args.topic.posters.length; i++){
-            abbreviatedPosters.push(this.args.topic.posters[i]);
-        }
-        //console.log(abbreviatedPosters)
-        return abbreviatedPosters;
-    }
     
-
     <template>
         {{~! no whitespace ~}}
         <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}}>
@@ -34,11 +27,9 @@ export default class TopicLink extends Component {
                     {{!-- start profile --}}
                     {{!--  <PreviewsBadgesComponent @topic={{@topic}} /> --}}
                     {{!-- end profile --}}
-                    
                     <div>
                         <div><strong>{{@topic.last_poster_username}} </strong></div>
                         <div style="font-size: 0.6rem; color: gray;">
-                            {{!--{{formatDate @topic.bumpedAtformat="medium-with-ago"noTitle="true"}}--}}
                             {{formatDate @topic.last_posted_at format="medium-with-ago"}}
                         </div>
                     </div>
@@ -47,13 +38,6 @@ export default class TopicLink extends Component {
                     {{icon "bookmark"}}
                 </div>
             </div>
-            
-            {{!--<div>
-                <p>Test</p>
-                <div class="topic-footer-badge">
-                    <PreviewsBadges @topic={{@topic}} />
-                </div>
-            </div>--}}
             {{~! no whitespace ~}}
         </PluginOutlet>
         {{~! no whitespace ~}}
