@@ -1,12 +1,7 @@
 import Component from "@glimmer/component";
-import { htmlSafe } from "@ember/template";
 import PluginOutlet from "discourse/components/plugin-outlet";
 import lazyHash from "discourse/helpers/lazy-hash";
-import concatClass from "discourse/helpers/concat-class";
-import formatDate from "discourse/helpers/format-date";
-import DButton from "discourse/components/d-button";
-import { action } from "@ember/object";
-import { service } from "@ember/service";
+import icon from "discourse/helpers/d-icon";
 
 export default class TopicLink extends Component {
     get url() {
