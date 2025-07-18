@@ -802,51 +802,77 @@ img.select-thumbnail-preview {
   color: var(--primary);
 }
 
-.custom-topic-card {
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  //background-color: white;
-  transition: box-shadow 0.2s ease;
+//Start form fian test
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.card-header {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  &:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
+  justify-content: space-between;
+  align-items: center;
 }
 
-.custom-topic-link {
+.profile-custom {
+  display: flex;
+  align-items: center;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.thumbnails {
+  margin: 1rem 0;
+}
+
+.thumbnails img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
   text-decoration: none;
-  color: inherit;
 }
 
-.custom-topic-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1a1a1a;
+.keywords {
+  margin: 0.5rem 0;
+  color: #555;
 }
 
-.custom-topic-excerpt {
-  font-size: 0.95rem;
+.categories {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.topic-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+  font-size: 0.9rem;
   color: #666;
 }
 
-.custom-topic-thumbnail {
-  margin-top: 0.5rem;
-  width: 100%;
-  max-height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
+.topic-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
-.custom-topic-meta {
-  font-size: 0.85rem;
-  color: #888;
-  margin-top: 0.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+.topic-meta i {
+  font-style: normal;
 }
