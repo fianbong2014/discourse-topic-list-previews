@@ -4,6 +4,7 @@ import lazyHash from "discourse/helpers/lazy-hash";
 import icon from "discourse/helpers/d-icon";
 import formatDate from "discourse/helpers/format-date";
 import avatar from "discourse/helpers/avatar";
+import PreviewsBadgesComponent from "./details/footer/previews-badges.gjs";
 // import PreviewsBadges from "./footer/previews-badges";
 
 export default class TopicLink extends Component {
@@ -29,30 +30,10 @@ export default class TopicLink extends Component {
             {{~! no whitespace ~}}
             <div class="card-header-f" style="padding: 1.5rem;">
                 <div class="profile-f">
-                    {{!--<img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" /> --}}
+                    <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" />
                     {{!-- start profile --}}
-                    <div class="topic-users">
-                        <div class="inline">
-                            {{#each this.abbrieviatedPosters as |poster|}}
-                                {{#if poster.count}}
-                                    ({{poster.count}})
-                                {{else}}
-                                    <a
-                                        href={{poster.user.path}}
-                                        data-user-card={{poster.user.username}}
-                                        class={{poster.extras}}
-                                    >
-                                        {{avatar
-                                            poster
-                                            avatarTemplatePath="user.avatar_template"
-                                            usernamePath="user.username"
-                                            imageSize="small"
-                                        }}
-                                    </a>
-                                {{/if}}
-                            {{/each}}
-                        </div>
-                    </div>
+
+                    <PreviewsBadgesComponent @topic={{@topic}} />
                     {{!-- end profile --}}
                     
                     <div>
