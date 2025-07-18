@@ -802,3 +802,29 @@ img.select-thumbnail-preview {
   color: var(--primary);
 }
 
+// start fian
+ .card-f {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.card-header-f {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-f {
+  display: flex;
+  align-items: center;
+}
+
+.profile-f img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
