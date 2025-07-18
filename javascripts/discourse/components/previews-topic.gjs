@@ -24,44 +24,40 @@ export default class TopicLink extends Component {
   }
 
   <template>
-    <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}} />
-    <a href={{this.url}} data-topic-id={{@topic.id}} class="title" >
-      <div class="card">
-      <!-- ส่วนที่ 1: โปรไฟล์ -->
-      <div class="card-header">
-        <div class="profile-custom">
-          <img src="https://via.placeholder.com/40" alt="Profile Picture" />
-          <div>
-            {{!-- <PreviewsBadges @topic={{@topic}} /> 
-            <div class="username">{{@topic.creator.username}}</div> --}}
-            
-            <div><strong>{{@topic.last_poster_username}}</strong></div>
-            <div style="font-size: 0.8rem; color: gray;">
-              {{!-- โพสเมื่อ 3 ชั่วโมงที่แล้ว --}}
-               {{@topic.createdAt startDate=@topic.bumpedAt }}
+    <div class="topic-link-wrapper">
+      <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}} />
+
+      <a href={{this.url}} data-topic-id={{@topic.id}} class="title">
+        <div class="card">
+          <!-- ส่วนที่ 1: โปรไฟล์ -->
+          <div class="card-header">
+            <div class="profile-custom">
+              <img src="https://via.placeholder.com/40" alt="Profile Picture" />
+              <div>
+                {{!-- <PreviewsBadges @topic={{@topic}} /> --}}
+                <div><strong>{{@topic.last_poster_username}}</strong></div>
+                <div class="posted-at">
+                  {{@topic.createdAt startDate=@topic.bumpedAt }}
+                </div>
+              </div>
+            </div>
+
+            <div class="save-icon">
+              <DButton
+                @action={{this.toggleBookmark}}
+                class={{concatClass
+                  "list-button btn-transparent topic-bookmark"
+                  this.bookmarkClass
+                }}
+                title={{i18n this.bookmarkTitle}}
+                data-topic_id={{@topic.id}}
+                data-topic_post_id={{@topic_post_id}}
+                @icon="bookmark"
+              />
             </div>
           </div>
         </div>
-
-        
-        <div class="save-icon">
-          {{!-- <i>🔖</i> --}}
-          <DButton
-            @action={{this.toggleBookmark}}
-            class={{concatClass
-              "list-button btn-transparent topic-bookmark"
-              this.bookmarkClass
-            }}
-            title={{i18n this.bookmarkTitle}}
-            data-topic_id={{@topic.id}}
-            data-topic_post_id={{@topic_post_id}}
-            @icon="bookmark"
-          />
-           
-        </div>
-      </div>
-    </div
-    </a>
-     
+      </a>
+    </div>
   </template>
 }
