@@ -1,8 +1,12 @@
-// app/components/topic-link.gjs
-import Component, { hbs } from '@glimmer/component';
-import formatDate from "discourse/helpers/format-date";
-import icon from "discourse/helpers/d-icon";
+import Component from "@glimmer/component";
+import { htmlSafe } from "@ember/template";
+import PluginOutlet from "discourse/components/plugin-outlet";
 import lazyHash from "discourse/helpers/lazy-hash";
+import concatClass from "discourse/helpers/concat-class";
+import formatDate from "discourse/helpers/format-date";
+import DButton from "discourse/components/d-button";
+import { action } from "@ember/object";
+import { service } from "@ember/service";
 
 export default class TopicLink extends Component {
     get url() {
@@ -11,26 +15,45 @@ export default class TopicLink extends Component {
             : this.args.topic.lastUnreadUrl;
     }
 
-    static template = hbs`
-    <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}} as |outlet|>
-      <div class="card-header-f" style="padding: 1.5rem;">
-        <div class="profile-f" style="display: flex; gap: 0.75rem; align-items: center;">
-          <img
-            src="https://www.w3schools.com/images/lamp.jpg"
-            alt="Profile Picture"
-            style="width: 40px; height: 40px; border-radius: 9999px;"
-          />
-          <div>
-            <div><strong>{{@topic.last_poster_username}}</strong></div>
-            <div style="font-size: 0.6rem; color: gray;">
-              {{format-date @topic.bumpedAt format="medium-with-ago" noTitle=true}}
+
+    <template>
+        {{~! no whitespace ~}}
+        <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}}>
+            {{~! no whitespace ~}}
+            {{!-- <a
+              href={{this.url}}
+              data-topic-id={{@topic.id}}
+              class="title"
+            >{{htmlSafe @topic.fancyTitle}}
+            </a> --}}
+            <div class="card-header-f" style="padding: 1.5rem;">
+                <div class="profile-f">
+                    <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" />
+                    <div>
+                        <div><strong>{{@topic.last_poster_username}} </strong></div>
+                        <div style="font-size: 0.6rem; color: gray;">
+                            {{!--{{formatDate @topic.bumpedAtformat="medium-with-ago"noTitle="true"}}--}}
+                            เวลาโพส
+                        </div>
+                    </div>
+                </div>
+                <div class="save-icon">
+                    <i>  {{icon "far-bookmark"}} </i>
+                    {{!-- <DButton
+                      @action="toggleBookmark"
+                      class={{concatClass
+                        "list-button btn-transparent topic-bookmark"
+                        this.bookmarkClass
+                      }}
+                      title="bookmark"
+                      data-topic_id={{@topic.id}}
+                      data-topic_post_id={{@topic_post_id}}
+                      @icon="bookmark"
+                    /> --}}
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="save-icon" style="margin-left: auto;">
-          {{d-icon "far-bookmark"}}
-        </div>
-      </div>
-    </PluginOutlet>
-  `;
+            {{~! no whitespace ~}}
+        </PluginOutlet>
+        {{~! no whitespace ~}}
+    </template>
 }
