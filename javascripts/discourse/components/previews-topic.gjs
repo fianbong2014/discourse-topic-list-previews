@@ -32,8 +32,7 @@ export default class TopicLink extends Component {
                 <div class="profile-f">
                     <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" />
                     {{!-- start profile --}}
-
-                    <PreviewsBadgesComponent @topic={{@topic}} />
+                    {{!--  <PreviewsBadgesComponent @topic={{@topic}} /> --}}
                     {{!-- end profile --}}
                     
                     <div>
