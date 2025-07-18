@@ -28,12 +28,12 @@ export default class TopicLink extends Component {
                         <div><strong>{{@topic.last_poster_username}} </strong></div>
                         <div style="font-size: 0.6rem; color: gray;">
                             {{!--{{formatDate @topic.bumpedAtformat="medium-with-ago"noTitle="true"}}--}}
-                            เวลาโพส
+                            {{formatDate @topic.last_posted_at format="MMM d, yyyy"}}
                         </div>
                     </div>
                 </div>
                 <div class="save-icon">
-                    <i>  {{icon "far-bookmark"}} </i>
+                    {{d-icon "bookmark"}}
                     {{!-- <DButton
                       @action="toggleBookmark"
                       class={{concatClass
