@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import { htmlSafe } from "@ember/template";
 import PluginOutlet from "discourse/components/plugin-outlet";
 import lazyHash from "discourse/helpers/lazy-hash";
+import { formatAge } from "discourse/lib/formatter"; // ใช้แสดงเวลาย่อ ๆ เช่น "3h"
 
 export default class TopicLink extends Component {
   get url() {
@@ -10,18 +11,44 @@ export default class TopicLink extends Component {
       : this.args.topic.lastUnreadUrl;
   }
 
+  get lastPostedAt() {
+    return formatAge(this.args.topic.last_posted_at);
+  }
+
   <template>
-    {{~! no whitespace ~}}
-    <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}}>
-      {{~! no whitespace ~}}
+    <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}} />
+
+    <div class="custom-topic-card">
       <a
         href={{this.url}}
         data-topic-id={{@topic.id}}
-        class="title"
-     
-      >{{htmlSafe @topic.fancyTitle}} xxxx </a>
-      {{~! no whitespace ~}}
-    </PluginOutlet>
-    {{~! no whitespace ~}}
+        class="custom-topic-link"
+      >
+        <div class="custom-topic-title">
+          {{htmlSafe @topic.fancyTitle}}
+        </div>
+
+        {{#if @topic.excerpt}}
+          <div class="custom-topic-excerpt">
+            {{@topic.excerpt}}
+          </div>
+        {{/if}}
+
+        {{#if @topic.thumbnails.length}}
+          <img
+            src={{@topic.thumbnails.0.url}}
+            alt="thumbnail"
+            class="custom-topic-thumbnail"
+          />
+        {{/if}}
+
+        <div class="custom-topic-meta">
+          🗨️ {{@topic.reply_count}} replies &nbsp;|&nbsp;
+          👀 {{@topic.views}} views &nbsp;|&nbsp;
+          👤 {{@topic.last_poster_username}} &nbsp;|&nbsp;
+          🕒 {{this.lastPostedAt}}
+        </div>
+      </a>
+    </div>
   </template>
 }
