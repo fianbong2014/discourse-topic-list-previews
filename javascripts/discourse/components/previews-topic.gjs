@@ -3,7 +3,7 @@ import PluginOutlet from "discourse/components/plugin-outlet";
 import lazyHash from "discourse/helpers/lazy-hash";
 import icon from "discourse/helpers/d-icon";
 import formatDate from "discourse/helpers/format-date";
-import PreviewsBadges from "./footer/previews-badges";
+// import PreviewsBadges from "./footer/previews-badges";
 
 export default class TopicLink extends Component {
     get url() {
@@ -37,12 +37,12 @@ export default class TopicLink extends Component {
                 </div>
             </div>
             
-            <div>
+            {{!--<div>
                 <p>Test</p>
                 <div class="topic-footer-badge">
                     <PreviewsBadges @topic={{@topic}} />
                 </div>
-            </div>
+            </div>--}}
             {{~! no whitespace ~}}
         </PluginOutlet>
         {{~! no whitespace ~}}
