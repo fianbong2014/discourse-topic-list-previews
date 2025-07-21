@@ -4,18 +4,8 @@ import lazyHash from "discourse/helpers/lazy-hash";
 import icon from "discourse/helpers/d-icon";
 import formatDate from "discourse/helpers/format-date";
 import avatar from "discourse/helpers/avatar";
-import PreviewsBadges from "./details/footer/previews-badges";
-
-import { service } from "@ember/service";
-
-
 export default class TopicLink extends Component {
-    @service siteSettings;
-    @service currentUser;
-    @service modal;
 
-    @tracked badges = []; // เก็บรายการ badge เพื่อแสดงใน template
-    @tracked creator;
     constructor() {
         super(...arguments);
         console.log("Topic Data:", this.args.topic); // args.topic คือ @topic
@@ -33,14 +23,17 @@ export default class TopicLink extends Component {
     async loadBadges() {
         try {
             const username = this.args.topic.creator.username;
+            //const apiUrl = settings; // get from args or settings
+
             if(settings?.badge_api_url){
                 const response = await fetch(`${settings?.badge_api_url}/user/${username}/badges`);
                 if (!response.ok) {
                     throw new Error(`Failed to fetch badges: ${response.status}`);
-
                 }
                 const result = await response.json();
-                console.log("✅ Parsed JSON:", result);
+
+                // console.log(username, result);
+
                 if (result.success) {
                     this.badges = result.data;
                 }
@@ -49,16 +42,22 @@ export default class TopicLink extends Component {
         } catch (error) {
             console.error(error);
             this.badges = [];
+            // Retry after 2 seconds
+            // setTimeout(() => this.loadBadges(), 2000);
         }
+
     }
+
+
 
     <template>
         {{~! no whitespace ~}}
         <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}}>
             {{~! no whitespace ~}}
             <div class="card-header-f" style="padding: 1.5rem;">
-            
-                <div class="topic-users">
+                <div class="profile-f">
+                    
+                    <div class="topic-users">
                         <div class="inline">
                             <span class="topic-user-badge-list">
                                 <a
@@ -66,12 +65,12 @@ export default class TopicLink extends Component {
                                     data-user-card={{this.creator.user.username}}
                                     class={{this.creator.extras}}
                                 >
-                                    {{avatar
-                                        this.creator
-                                        avatarTemplatePath="user.avatar_template"
-                                        usernamePath="user.username"
-                                        imageSize="small"
-                                    }}
+                                {{avatar
+                                    this.creator
+                                    avatarTemplatePath="user.avatar_template"
+                                    usernamePath="user.username"
+                                    imageSize="small"
+                                }}
                                 </a>
                                 
                                 {{#if this.badges.length}}
@@ -81,22 +80,19 @@ export default class TopicLink extends Component {
                                             {{#if badge.image_url}}
                                                 <img src="{{badge.image_url}}" class="topic-badge-image" width="30" height="30" alt="{{badge.name}}"/>
                                             {{/if}}
-                                            <span class="topic-badge-name">{{badge.name}} xxxx</span>
+                                           
                                         </span>
                                         {{/if}}
                                     {{/each}}
+                                
                                 {{/if}}
                              </span>
                         </div>
                     </div>
                     
-                <div class="profile-f">
-                    {{!--  <PreviewsBadges @topic={{@topic}} /> --}}
-                    
-                    
-                
-                    {{!-- <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" /> --}}
+                    <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" />
                     {{!-- start profile --}}
+                    {{!--  <PreviewsBadgesComponent @topic={{@topic}} /> --}}
                     {{!-- end profile --}}
                     <div>
                         <div><strong>{{@topic.last_poster_username}} </strong></div>
