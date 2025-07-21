@@ -81,11 +81,19 @@ export default class TopicLink extends Component {
                     </div>
                     --}}
                     {{!--  <PreviewsBadges @topic={{@topic}} /> --}}
-                    {{#each this.badges as |badge|}}
-                      {{#if badge.image_url}}
-                        <img src="{{badge.image_url}}"  alt="{{badge.name}}" />
-                      {{/if}}
-                    {{/each}}
+                    
+                    
+                    {{#if this.badges.length}}
+                        {{#each this.badges as |badge|}}
+                            {{#if badge.allow_title}}
+                            <span class="topic-user-badge">
+                                {{#if badge.image_url}}
+                                    <img src="{{badge.image_url}}" alt="{{badge.name}}"/>
+                                {{/if}}
+                            </span>
+                            {{/if}}
+                        {{/each}}
+                    {{/if}}
                     {{!-- <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" /> --}}
                     {{!-- start profile --}}
                     {{!-- end profile --}}
