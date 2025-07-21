@@ -152,12 +152,12 @@ img.non-tiles-thumbnail {
     //grid-row-end: span 16 !important;
     
     // เมื่อมี class has-excerpt
-    //&.has-excerpt {
-    //  grid-row-end: span 18 !important;
-    //  &.has-thumpnail {
-    //    grid-row-end: span 34 !important;
-    //  }
-    //}
+    &.has-excerpt {
+      grid-row-end: span 18 !important;
+      &.has-thumpnail {
+        grid-row-end: span 34 !important;
+      }
+    }
     //&:not(.has-excerpt){
     //  &.has-thumpnail {
     //  grid-row-end: span 18 !important;

@@ -84,7 +84,6 @@ export default class TopicLink extends Component {
                                         </span>
                                         {{/if}}
                                     {{/each}}
-                                
                                 {{/if}}
                              </span>
                         </div>
@@ -94,12 +93,12 @@ export default class TopicLink extends Component {
                     {{!-- start profile --}}
                     {{!--  <PreviewsBadgesComponent @topic={{@topic}} /> --}}
                     {{!-- end profile --}}
-                    <div>
+                    {{!--<div>
                         <div><strong>{{@topic.last_poster_username}} </strong></div>
                         <div style="font-size: 0.6rem; color: gray;">
                             {{formatDate @topic.last_posted_at format="medium-with-ago"}}
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="save-icon">
                     {{icon "bookmark"}}
