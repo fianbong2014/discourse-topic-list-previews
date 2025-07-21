@@ -1,5 +1,7 @@
 ﻿import Component from "@glimmer/component";
 import { htmlSafe } from "@ember/template";
+import PluginOutlet from "discourse/components/plugin-outlet";
+
 export default class PreviewsTitle extends Component {
     get url() {
         return this.args.topic.linked_post_number
