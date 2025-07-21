@@ -47,8 +47,8 @@ export default class TopicLink extends Component {
             {{~! no whitespace ~}}
             <div class="card-header-f" style="padding: 1.5rem;">
                 <div class="profile-f">
-                    
-                     {{!--<div class="topic-users">
+                    {{!--  
+                     <div class="topic-users">
                         <div class="inline">
                             <span class="topic-user-badge-list">
                                 <a
@@ -56,12 +56,12 @@ export default class TopicLink extends Component {
                                     data-user-card={{this.creator.user.username}}
                                     class={{this.creator.extras}}
                                 >
-                                {{avatar
-                                    this.creator
-                                    avatarTemplatePath="user.avatar_template"
-                                    usernamePath="user.username"
-                                    imageSize="small"
-                                }}
+                                    {{avatar
+                                        this.creator
+                                        avatarTemplatePath="user.avatar_template"
+                                        usernamePath="user.username"
+                                        imageSize="small"
+                                    }}
                                 </a>
                                 <span class="topic-creator">{{this.creator.user.username}}</span>
                                 {{#if this.badges.length}}
@@ -78,13 +78,16 @@ export default class TopicLink extends Component {
                                 {{/if}}
                              </span>
                         </div>
-                    </div>--}}
-                    
-                    <PreviewsBadges @topic={{@topic}} /> 
-
-                    {{!-- img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" /> --}}
+                    </div>
+                    --}}
+                    {{!--  <PreviewsBadges @topic={{@topic}} /> --}}
+                    {{#each this.badges as |badge|}}
+                      {{#if badge.image_url}}
+                        <img src="{{badge.image_url}}"  alt="{{badge.name}}" />
+                      {{/if}}
+                    {{/each}}
+                    {{!-- <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" /> --}}
                     {{!-- start profile --}}
-                    {{!--  <PreviewsBadgesComponent @topic={{@topic}} /> --}}
                     {{!-- end profile --}}
                     <div>
                         <div><strong>{{@topic.last_poster_username}} </strong></div>
