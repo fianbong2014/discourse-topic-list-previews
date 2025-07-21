@@ -149,20 +149,20 @@ img.non-tiles-thumbnail {
     border: none;
     overflow-y: hidden;
     overflow-x: hidden;
-    grid-row-end: span 16 !important;
+    //grid-row-end: span 16 !important;
     
     // เมื่อมี class has-excerpt
-    &.has-excerpt {
-      grid-row-end: span 18 !important;
-      &.has-thumpnail {
-        grid-row-end: span 34 !important;
-      }
-    }
-    &:not(.has-excerpt){
-      &.has-thumpnail {
-      grid-row-end: span 18 !important;
-    }
-    }
+    //&.has-excerpt {
+    //  grid-row-end: span 18 !important;
+    //  &.has-thumpnail {
+    //    grid-row-end: span 34 !important;
+    //  }
+    //}
+    //&:not(.has-excerpt){
+    //  &.has-thumpnail {
+    //  grid-row-end: span 18 !important;
+    //}
+    //}
     
 
   }

@@ -61,6 +61,7 @@ export default class PreviewsMeta extends Component {
             </a>
           </div>
         </div>
+        {{!-- 
         <div class="bottom-line">
           <div
             class={{concatClass
@@ -79,7 +80,7 @@ export default class PreviewsMeta extends Component {
               }}
             </a>
           </div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </template>
