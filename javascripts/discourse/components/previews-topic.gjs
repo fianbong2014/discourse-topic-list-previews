@@ -57,7 +57,7 @@ export default class TopicLink extends Component {
             <div class="card-header-f" style="padding: 1.5rem;">
                 <div class="profile-f">
                     
-                    <div class="topic-users">
+                    <div class="topic-users" style="margin-right: 0.75rem;">
                         <div class="inline">
                             <span class="topic-user-badge-list">
                                 <a
@@ -78,7 +78,7 @@ export default class TopicLink extends Component {
                                         {{#if badge.allow_title}}
                                         <span class="topic-user-badge">
                                             {{#if badge.image_url}}
-                                                <img src="{{badge.image_url}}" class="topic-badge-image" width="30" height="30" alt="{{badge.name}}"/>
+                                                <img src="{{badge.image_url}}" class="topic-badge-image" alt="{{badge.name}}"/>
                                             {{/if}}
                                            
                                         </span>
@@ -90,7 +90,7 @@ export default class TopicLink extends Component {
                         </div>
                     </div>
                     
-                    <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" />
+                    {{!-- <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" /> --}}
                     {{!-- start profile --}}
                     {{!--  <PreviewsBadgesComponent @topic={{@topic}} /> --}}
                     {{!-- end profile --}}
