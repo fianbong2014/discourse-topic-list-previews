@@ -29,6 +29,20 @@
         color: #ccc;
       }
     }
+    
+    &.has-excerpt{
+      .topic-details,
+      a.title,
+      a.title:not(.badge-notification),
+      .topic-featured-link,
+      .topic-excerpt,
+      .discourse-tag,
+      .topic-views,
+      .badge-posts,
+      .like-count {
+        color: #ccc;
+      }
+    }
   }
 
   &.dark-text {
@@ -61,6 +75,20 @@
       .badge-posts,
       .like-count {
         color: #444;
+      }
+    }
+
+    &.has-excerpt{
+      .topic-details,
+      a.title,
+      a.title:not(.badge-notification),
+      .topic-featured-link,
+      .topic-excerpt,
+      .discourse-tag,
+      .topic-views,
+      .badge-posts,
+      .like-count {
+        color: #ccc;
       }
     }
   }
@@ -106,10 +134,10 @@ img.non-tiles-thumbnail {
 }
 
 .more-topics__container
-  .more-topics__list
-  .topic-list-body
-  .topic-list-item:first-child
-  td {
+.more-topics__list
+.topic-list-body
+.topic-list-item:first-child
+td {
   padding-top: 0.8em;
 }
 
@@ -132,80 +160,6 @@ img.non-tiles-thumbnail {
     display: none;
   }
 
-  //tbody {
-  //  .topic-list-item-separator {
-  //    display: none;
-  //  }
-  //  display: grid;
-  //  gap: 4px;
-  //  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  //  grid-auto-rows: 4px;
-  //  border-top: none;
-  //  
-  //}
-  //
-  //.topic-list-item,
-  //tr {
-  //  border: none;
-  //  overflow: hidden;
-  //  display: flex;
-  //  flex-direction: column;
-  //  box-sizing: border-box;
-  //  cursor: pointer;
-  //  border-radius: 3px;
-  //  
-  //  //border: none;
-  //  //overflow-y: hidden;
-  //  //overflow-x: hidden;
-  //  //grid-row-end: span 16 !important;
-  //  
-  //  // เมื่อมี class has-excerpt
-  //  //&.has-excerpt {
-  //  //  grid-row-end: span 18 !important;
-  //  //  &.has-thumpnail {
-  //  //    grid-row-end: span 34 !important;
-  //  //  }
-  //  //}
-  //  //&:not(.has-excerpt){
-  //  //  &.has-thumpnail {
-  //  //  grid-row-end: span 18 !important;
-  //  //}
-  //  //}
-  //  
-  //}
-  //
-  //
-  //.topic-list-data:first-of-type {
-  //  padding-left: 0;
-  //}
-  //
-  //.tiles-grid-item-width2 {
-  //  box-sizing: border-box;
-  //  cursor: pointer;
-  //  border-radius: 3px;
-  //  grid-column-end: span 2;
-  //}
-  //
-  //.topic-list-item {
-  //  box-sizing: border-box;
-  //  cursor: pointer;
-  //  border-radius: 3px;
-  //  //grid-row-end: span 44;
-  //  display: flex;
-  //  flex-direction: column;
-  //
-  //  &.no-background-colour {
-  //    border: 1px solid var(--primary-low);
-  //  }
-  //
-  //  .main-link {
-  //    padding-left: 0.67em;
-  //  }
-  //}
-
-  /* =======================
-   Grid Container Settings
-   ======================= */
   tbody {
     display: grid;
     gap: 4px;
@@ -213,23 +167,50 @@ img.non-tiles-thumbnail {
     grid-auto-rows: 4px;
     border-top: none;
 
-    .topic-list-item-separator {
-      display: none;
-    }
   }
 
-  /* ==========================
-     Topic List Item Structure
-     ========================== */
   .topic-list-item,
   tr {
     border: none;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    //grid-row-end: span 16 !important;
+
+    // เมื่อมี class has-excerpt
+    //&.has-excerpt {
+    //  grid-row-end: span 18 !important;
+    //  &.has-thumpnail {
+    //    grid-row-end: span 34 !important;
+    //  }
+    //}
+    //&:not(.has-excerpt){
+    //  &.has-thumpnail {
+    //  grid-row-end: span 18 !important;
+    //}
+    //}
+
+
+  }
+
+
+  .topic-list-data:first-of-type {
+    padding-left: 0;
+  }
+
+  .tiles-grid-item-width2 {
     box-sizing: border-box;
     cursor: pointer;
     border-radius: 3px;
+    grid-column-end: span 2;
+  }
+
+  .topic-list-item {
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 3px;
+    //grid-row-end: span 44;
+    display: flex;
+    flex-direction: column;
 
     &.no-background-colour {
       border: 1px solid var(--primary-low);
@@ -238,48 +219,7 @@ img.non-tiles-thumbnail {
     .main-link {
       padding-left: 0.67em;
     }
-
-    // By default, let grid-row auto span
-    grid-row-end: span var(--rows, auto);
   }
-
-  /* ==========================
-     Variable Span Fallback (Optional)
-     Use JS or Tailwind plugin for dynamic span based on height
-     ========================== */
-  /*
-  .topic-list-item {
-    grid-row-end: span 44; // example fallback if needed
-  }
-  */
-
-  /* ========================
-     Special Width Modifier
-     ======================== */
-  .tiles-grid-item-width2 {
-    grid-column-end: span 2;
-    box-sizing: border-box;
-    cursor: pointer;
-    border-radius: 3px;
-  }
-
-  /* =======================
-     Optional Grid Container
-     ======================= */
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-auto-rows: 10px;
-    gap: 16px;
-  }
-
-  /* ==========================
-     Topic List Data Adjustments
-     ========================== */
-  .topic-list-data:first-of-type {
-    padding-left: 0;
-  }
-
 
   .topic-thumbnail {
     grid-area: photo;
@@ -497,7 +437,7 @@ img.non-tiles-thumbnail {
           min-height: 190px;
           height: auto;
           overflow-y: hidden;
-        
+
         }
 
         .topic-details {
@@ -832,8 +772,8 @@ img.select-thumbnail-preview {
 
 .tiles-grid-item {
   box-shadow:
-    0 2px 5px 0 rgba(0, 0, 0, 0.16),
-    0 0 0 0 rgba(0, 0, 0, 0.12);
+          0 2px 5px 0 rgba(0, 0, 0, 0.16),
+          0 0 0 0 rgba(0, 0, 0, 0.12);
 }
 
 @if $topic_list_fps_search_grid == "true" {
@@ -890,7 +830,7 @@ img.select-thumbnail-preview {
 }
 
 // start fian
- .card-f {
+.card-f {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   padding: 1.5rem;
