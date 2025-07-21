@@ -228,12 +228,12 @@ export default apiInitializer("0.8", (api) => {
         { after: "topic" }
       );
     }
-    if(topicListPreviewsService.)
-    
+
+    //New title
     columns.add(
         "previews-title",
-        {item: PreviewsTitle},
-        {after: "topic"}
+        { item: PreviewsTitle},
+        { after: "topic"}
     )
     
     if (topicListPreviewsService.displayTiles) {
