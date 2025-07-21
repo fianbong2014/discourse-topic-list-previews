@@ -4,12 +4,6 @@ import lazyHash from "discourse/helpers/lazy-hash";
 import icon from "discourse/helpers/d-icon";
 import formatDate from "discourse/helpers/format-date";
 import avatar from "discourse/helpers/avatar";
-import PreviewsActions from "./footer/previews-actions";
-import PreviewsMeta from "./footer/previews-meta";
-import PreviewsUsers from "./footer/previews-users";
-import PreviewsBadges from "./footer/previews-badges";
-
-
 export default class TopicLink extends Component {
 
     constructor() {
@@ -21,21 +15,72 @@ export default class TopicLink extends Component {
             ? this.args.topic.urlForPostNumber(this.args.topic.linked_post_number)
             : this.args.topic.lastUnreadUrl;
     }
+
+    get abbrieviatedPosters() {
+        let abbreviatedPosters = [];
+        //console.log(this.args.topic.posters)
+
+        //console.log(settings?.poster_limit);
+
+
+        for(let i=1;i<this.args.topic.posters.length; i++){
+            abbreviatedPosters.push(this.args.topic.posters[i]);
+        }
+
+        /*if (this.args.topic.posters.length < 6) {
+          abbreviatedPosters = this.args.topic.posters;
+        } else {
+          this.args.topic.posters[0].count = false;
+          abbreviatedPosters.push(this.args.topic.posters[0]);
     
+          this.args.topic.posters[1].count = false;
+          abbreviatedPosters.push(this.args.topic.posters[1]);
+    
+          let count = { count: this.args.topic.posters.length - 3 };
+          abbreviatedPosters.push(count);
+    
+          this.args.topic.posters[this.args.topic.posters.length - 2].count = false;
+          abbreviatedPosters.push(
+            this.args.topic.posters[this.args.topic.posters.length - 2]
+          );
+          this.args.topic.posters[this.args.topic.posters.length - 1].count = false;
+          abbreviatedPosters.push(
+            this.args.topic.posters[this.args.topic.posters.length - 1]
+          );
+        }*/
+
+
+        //console.log(abbreviatedPosters)
+        return abbreviatedPosters;
+    }
+
+
     <template>
         {{~! no whitespace ~}}
         <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}}>
             {{~! no whitespace ~}}
             <div class="card-header-f" style="padding: 1.5rem;">
                 <div class="profile-f">
-                    <div>
-                    <div class="topic-footer-badge">
-                        <PreviewsBadges @topic={{@topic}} /> 
-                      </div>
-                      <div class="topic-footer">
-                        <PreviewsMeta @topic={{@topic}} />
-                        <PreviewsUsers @topic={{@topic}} />
-                        <PreviewsActions @topic={{@topic}} />
+                    <div class="topic-users">
+                      <div class="inline">
+                        {{#each this.abbrieviatedPosters as |poster|}}
+                          {{#if poster.count}}
+                            ({{poster.count}})
+                          {{else}}
+                            <a
+                              href={{poster.user.path}}
+                              data-user-card={{poster.user.username}}
+                              class={{poster.extras}}
+                            >
+                              {{avatar
+                                poster
+                                avatarTemplatePath="user.avatar_template"
+                                usernamePath="user.username"
+                                imageSize="small"
+                              }}
+                            </a>
+                          {{/if}}
+                        {{/each}}
                       </div>
                     </div>
                     <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" />
