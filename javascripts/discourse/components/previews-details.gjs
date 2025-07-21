@@ -5,8 +5,8 @@ import PreviewsCategories from "./details/previews-categories";
 
 <template>
   <div class="topic-details" style="padding-top: 0.75rem;">
-    <PreviewsCategories @topic={{@topic}} />
     <PreviewsExcerpt @topic={{@topic}} />
+    <PreviewsCategories @topic={{@topic}} />
     <PreviewsFooter @topic={{@topic}} />
   </div>
 </template>

@@ -843,7 +843,17 @@ img.select-thumbnail-preview {
   //padding-bottom: 0.75rem;
   //padding-left: 0.75rem;
 }
+
 .categories {
-  font-size: 0.9rem;
-  color: #888;
+  margin-bottom: 0.5rem;
+  //color: #888;
+  padding-left: 1rem;
+}
+
+.badge-f {
+  background-color: #e0e0e0;
+  padding: 0.2rem 0.5rem;
+  margin-left: 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
 }
