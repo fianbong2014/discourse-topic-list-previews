@@ -54,7 +54,7 @@ export default class TopicLink extends Component {
         {{~! no whitespace ~}}
         <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}}>
             {{~! no whitespace ~}}
-            <div class="card-header-f" style="padding: 1.5rem;">
+            <div class="card-header-f"> {{!--  style="padding: 1.5rem --}}
                 <div class="profile-f">
                     
                     <div class="topic-users" style="margin-right: 0.75rem;">

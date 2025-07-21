@@ -283,6 +283,7 @@ img.non-tiles-thumbnail {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0.75rem;
     padding-top: 10px;
     padding-left: 0.67em;
     padding-right: 0.67em;
@@ -816,6 +817,7 @@ img.select-thumbnail-preview {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 1.5rem 0.5rem 1.5rem;
 }
 
 .profile-f {
