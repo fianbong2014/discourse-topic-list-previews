@@ -51,3 +51,5 @@ function resizeAllGridItems(isSideBySide) {
 }
 
 export { resizeAllGridItems };
+window.addEventListener("load", () => resizeAllGridItems(true));
+window.addEventListener("resize", () => resizeAllGridItems(true));
