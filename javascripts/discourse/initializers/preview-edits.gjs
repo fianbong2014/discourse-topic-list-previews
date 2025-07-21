@@ -7,6 +7,7 @@ import PreviewsDetails from "./../components/previews-details";
 import PreviewsTopics from "./../components/previews-topic";
 import PreviewsThumbnail from "./../components/previews-thumbnail";
 import PreviewsTilesThumbnail from "./../components/previews-tiles-thumbnail";
+import PreviewsTitle from "../components/details/previews-title";
 
 const PLUGIN_ID = "discourse-tc-topic-list-previews";
 
@@ -227,6 +228,14 @@ export default apiInitializer("0.8", (api) => {
         { after: "topic" }
       );
     }
+    if(topicListPreviewsService.)
+    
+    columns.add(
+        "previews-title",
+        {item: PreviewsTitle},
+        {after: "topic"}
+    )
+    
     if (topicListPreviewsService.displayTiles) {
       columns.add(
         "previews-details",
