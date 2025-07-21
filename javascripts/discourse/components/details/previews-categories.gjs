@@ -3,17 +3,19 @@
 export default class PreviewsCategories extends Component {
     get categories() {
         const topic = this.args.topic;
-        //console.log("ค่าที่ได้รับใน topic:", topic);
-        console.log('topic.tags: ', topic.tags)
         return topic.tags;
     }
-    
+    get hasCategories() {
+        return this.categories.length > 0;
+    }
     <template>
-        <div class="categories">
-          🗂️ categories:
-          {{#each this.categories as |category|}}
-            <span class="badge-categories">{{category}}</span>
-          {{/each}}
-        </div>
+       {{#if this.hasCategories}}
+          <div class="categories">
+            categories:
+            {{#each this.categories as |category|}}
+              <span class="badge-categories">{{category}}</span>
+            {{/each}}
+          </div>
+        {{/if}}
     </template>
 }
