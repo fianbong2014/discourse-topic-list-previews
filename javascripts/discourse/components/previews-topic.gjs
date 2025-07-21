@@ -78,12 +78,13 @@ export default class TopicLink extends Component {
                                         {{#if badge.allow_title}}
                                         <span class="topic-user-badge">
                                             {{#if badge.image_url}}
-                                                <img src="{{badge.image_url}}" class="topic-badge-image" alt="{{badge.name}}"/>
+                                                <img src="{{badge.image_url}}" width="40" height="40" class="topic-badge-image" alt="{{badge.name}}"/>
                                             {{/if}}
-                                           
+                                               <span class="topic-badge-name">{{badge.name}}</span>
                                         </span>
                                         {{/if}}
                                     {{/each}}
+                                
                                 {{/if}}
                              </span>
                         </div>
@@ -93,16 +94,16 @@ export default class TopicLink extends Component {
                     {{!-- start profile --}}
                     {{!--  <PreviewsBadgesComponent @topic={{@topic}} /> --}}
                     {{!-- end profile --}}
-                    {{!--<div>
+                    <div>
                         <div><strong>{{@topic.last_poster_username}} </strong></div>
                         <div style="font-size: 0.6rem; color: gray;">
                             {{formatDate @topic.last_posted_at format="medium-with-ago"}}
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
-                <div class="save-icon">
+                {{!-- <div class="save-icon">
                     {{icon "bookmark"}}
-                </div>
+                </div> --}}
             </div>
             {{~! no whitespace ~}}
         </PluginOutlet>

@@ -152,12 +152,12 @@ img.non-tiles-thumbnail {
     //grid-row-end: span 16 !important;
     
     // เมื่อมี class has-excerpt
-    &.has-excerpt {
-      grid-row-end: span 18 !important;
-      &.has-thumpnail {
-        grid-row-end: span 34 !important;
-      }
-    }
+    //&.has-excerpt {
+    //  grid-row-end: span 18 !important;
+    //  &.has-thumpnail {
+    //    grid-row-end: span 34 !important;
+    //  }
+    //}
     //&:not(.has-excerpt){
     //  &.has-thumpnail {
     //  grid-row-end: span 18 !important;
@@ -183,7 +183,7 @@ img.non-tiles-thumbnail {
     box-sizing: border-box;
     cursor: pointer;
     border-radius: 3px;
-    grid-row-end: span 44;
+    //grid-row-end: span 44;
     display: flex;
     flex-direction: column;
 
@@ -827,4 +827,17 @@ img.select-thumbnail-preview {
   height: 40px;
   border-radius: 50%;
   margin-right: 0.75rem;
+}
+
+.title-f {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  padding: 0.75rem;
+  //padding-top: 0.75rem;
+  //padding-right: 0.75rem;
+  //padding-bottom: 0.75rem;
+  //padding-left: 0.75rem;
+}
 }

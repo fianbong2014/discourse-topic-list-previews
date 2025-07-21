@@ -11,9 +11,9 @@ export default class PreviewsTitle extends Component {
         <a
           href={{this.url}}
           data-topic-id={{@topic.id}}
-          class="title"
+          class="title-f"
        
-        >{{htmlSafe @topic.fancyTitle}} xxxx </a>
+        >{{htmlSafe @topic.fancyTitle}}</a>
         {{~! no whitespace ~}}
       </PluginOutlet>
       {{~! no whitespace ~}}
