@@ -132,60 +132,104 @@ img.non-tiles-thumbnail {
     display: none;
   }
 
+  //tbody {
+  //  .topic-list-item-separator {
+  //    display: none;
+  //  }
+  //  display: grid;
+  //  gap: 4px;
+  //  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  //  grid-auto-rows: 4px;
+  //  border-top: none;
+  //  
+  //}
+  //
+  //.topic-list-item,
+  //tr {
+  //  border: none;
+  //  overflow: hidden;
+  //  display: flex;
+  //  flex-direction: column;
+  //  box-sizing: border-box;
+  //  cursor: pointer;
+  //  border-radius: 3px;
+  //  
+  //  //border: none;
+  //  //overflow-y: hidden;
+  //  //overflow-x: hidden;
+  //  //grid-row-end: span 16 !important;
+  //  
+  //  // เมื่อมี class has-excerpt
+  //  //&.has-excerpt {
+  //  //  grid-row-end: span 18 !important;
+  //  //  &.has-thumpnail {
+  //  //    grid-row-end: span 34 !important;
+  //  //  }
+  //  //}
+  //  //&:not(.has-excerpt){
+  //  //  &.has-thumpnail {
+  //  //  grid-row-end: span 18 !important;
+  //  //}
+  //  //}
+  //  
+  //}
+  //
+  //
+  //.topic-list-data:first-of-type {
+  //  padding-left: 0;
+  //}
+  //
+  //.tiles-grid-item-width2 {
+  //  box-sizing: border-box;
+  //  cursor: pointer;
+  //  border-radius: 3px;
+  //  grid-column-end: span 2;
+  //}
+  //
+  //.topic-list-item {
+  //  box-sizing: border-box;
+  //  cursor: pointer;
+  //  border-radius: 3px;
+  //  //grid-row-end: span 44;
+  //  display: flex;
+  //  flex-direction: column;
+  //
+  //  &.no-background-colour {
+  //    border: 1px solid var(--primary-low);
+  //  }
+  //
+  //  .main-link {
+  //    padding-left: 0.67em;
+  //  }
+  //}
+
+  /* =======================
+   Grid Container Settings
+   ======================= */
   tbody {
-    .topic-list-item-separator {
-      display: none;
-    }
     display: grid;
     gap: 4px;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     grid-auto-rows: 4px;
     border-top: none;
-    
+
+    .topic-list-item-separator {
+      display: none;
+    }
   }
 
+  /* ==========================
+     Topic List Item Structure
+     ========================== */
   .topic-list-item,
   tr {
     border: none;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    //grid-row-end: span 16 !important;
-    
-    // เมื่อมี class has-excerpt
-    //&.has-excerpt {
-    //  grid-row-end: span 18 !important;
-    //  &.has-thumpnail {
-    //    grid-row-end: span 34 !important;
-    //  }
-    //}
-    //&:not(.has-excerpt){
-    //  &.has-thumpnail {
-    //  grid-row-end: span 18 !important;
-    //}
-    //}
-    
-
-  }
-
-
-  .topic-list-data:first-of-type {
-    padding-left: 0;
-  }
-
-  .tiles-grid-item-width2 {
-    box-sizing: border-box;
-    cursor: pointer;
-    border-radius: 3px;
-    grid-column-end: span 2;
-  }
-
-  .topic-list-item {
-    box-sizing: border-box;
-    cursor: pointer;
-    border-radius: 3px;
-    //grid-row-end: span 44;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 3px;
 
     &.no-background-colour {
       border: 1px solid var(--primary-low);
@@ -194,7 +238,48 @@ img.non-tiles-thumbnail {
     .main-link {
       padding-left: 0.67em;
     }
+
+    // By default, let grid-row auto span
+    grid-row-end: span var(--rows, auto);
   }
+
+  /* ==========================
+     Variable Span Fallback (Optional)
+     Use JS or Tailwind plugin for dynamic span based on height
+     ========================== */
+  /*
+  .topic-list-item {
+    grid-row-end: span 44; // example fallback if needed
+  }
+  */
+
+  /* ========================
+     Special Width Modifier
+     ======================== */
+  .tiles-grid-item-width2 {
+    grid-column-end: span 2;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+
+  /* =======================
+     Optional Grid Container
+     ======================= */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 10px;
+    gap: 16px;
+  }
+
+  /* ==========================
+     Topic List Data Adjustments
+     ========================== */
+  .topic-list-data:first-of-type {
+    padding-left: 0;
+  }
+
 
   .topic-thumbnail {
     grid-area: photo;
