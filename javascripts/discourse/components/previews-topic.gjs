@@ -4,6 +4,7 @@ import lazyHash from "discourse/helpers/lazy-hash";
 import icon from "discourse/helpers/d-icon";
 import formatDate from "discourse/helpers/format-date";
 import avatar from "discourse/helpers/avatar";
+import PreviewsBadges from "./details/footer/previews-badges";
 export default class TopicLink extends Component {
 
     constructor() {
@@ -23,17 +24,12 @@ export default class TopicLink extends Component {
     async loadBadges() {
         try {
             const username = this.args.topic.creator.username;
-            //const apiUrl = settings; // get from args or settings
-            
             if(settings?.badge_api_url){
                 const response = await fetch(`${settings?.badge_api_url}/user/${username}/badges`);
                 if (!response.ok) {
                     throw new Error(`Failed to fetch badges: ${response.status}`);
                 }
                 const result = await response.json();
-
-                // console.log(username, result);
-
                 if (result.success) {
                     this.badges = result.data;
                 }
@@ -42,14 +38,9 @@ export default class TopicLink extends Component {
         } catch (error) {
             console.error(error);
             this.badges = [];
-            // Retry after 2 seconds
-            // setTimeout(() => this.loadBadges(), 2000);
         }
-
     }
-
-
-
+    
     <template>
         {{~! no whitespace ~}}
         <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}}>
@@ -57,7 +48,7 @@ export default class TopicLink extends Component {
             <div class="card-header-f" style="padding: 1.5rem;">
                 <div class="profile-f">
                     
-                    <div class="topic-users">
+                     {{!--<div class="topic-users">
                         <div class="inline">
                             <span class="topic-user-badge-list">
                                 <a
@@ -84,13 +75,14 @@ export default class TopicLink extends Component {
                                         </span>
                                         {{/if}}
                                     {{/each}}
-                                
                                 {{/if}}
                              </span>
                         </div>
-                    </div>
+                    </div>--}}
                     
-                    <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" />
+                    <PreviewsBadges @topic={{@topic}} /> 
+
+                    {{!-- img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" /> --}}
                     {{!-- start profile --}}
                     {{!--  <PreviewsBadgesComponent @topic={{@topic}} /> --}}
                     {{!-- end profile --}}
