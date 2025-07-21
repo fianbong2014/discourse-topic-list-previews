@@ -5,8 +5,17 @@ import icon from "discourse/helpers/d-icon";
 import formatDate from "discourse/helpers/format-date";
 import avatar from "discourse/helpers/avatar";
 import PreviewsBadges from "./details/footer/previews-badges";
+
+import { service } from "@ember/service";
+
+
 export default class TopicLink extends Component {
-    @tracked badges = [];
+    @service siteSettings;
+    @service currentUser;
+    @service modal;
+
+    @tracked badges = []; // เก็บรายการ badge เพื่อแสดงใน template
+    @tracked creator;
     constructor() {
         super(...arguments);
         console.log("Topic Data:", this.args.topic); // args.topic คือ @topic
@@ -42,31 +51,29 @@ export default class TopicLink extends Component {
             this.badges = [];
         }
     }
-    
+
     <template>
         {{~! no whitespace ~}}
         <PluginOutlet @name="topic-link" @outletArgs={{lazyHash topic=@topic}}>
             {{~! no whitespace ~}}
             <div class="card-header-f" style="padding: 1.5rem;">
-                {{!-- START --}}
+            
                 <div class="topic-users">
                         <div class="inline">
                             <span class="topic-user-badge-list">
-                                <a href={{this.creator.user.path}} data-user-card={{this.creator.user.username}} class={{this.creator.extras}}>
-                                    {{avatar  this.creator
+                                <a
+                                    href={{this.creator.user.path}}
+                                    data-user-card={{this.creator.user.username}}
+                                    class={{this.creator.extras}}
+                                >
+                                    {{avatar
+                                        this.creator
                                         avatarTemplatePath="user.avatar_template"
-                                        usernamePath="user.username"  imageSize="small"
+                                        usernamePath="user.username"
+                                        imageSize="small"
                                     }}
                                 </a>
-                                <span class="topic-creator"><strong>{{this.creator.user.username}}</strong></span>
                                 
-                                {{!--<div>
-                                    <div><strong>{{@topic.last_poster_username}} </strong></div>
-                                    <div style="font-size: 0.6rem; color: gray;">
-                                        {{formatDate @topic.last_posted_at format="medium-with-ago"}}
-                                    </div>
-                                </div>--}}
-                    
                                 {{#if this.badges.length}}
                                     {{#each this.badges as |badge|}}
                                         {{#if badge.allow_title}}
@@ -82,11 +89,15 @@ export default class TopicLink extends Component {
                              </span>
                         </div>
                     </div>
-                {{!-- END --}}
                     
                 <div class="profile-f">
-                   {{!--  <PreviewsBadges @topic={{@topic}} /> --}}
-                   <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" />
+                    {{!--  <PreviewsBadges @topic={{@topic}} /> --}}
+                    
+                    
+                
+                    {{!-- <img src="https://www.w3schools.com/images/lamp.jpg" alt="Profile Picture" data-oath="user.username" /> --}}
+                    {{!-- start profile --}}
+                    {{!-- end profile --}}
                     <div>
                         <div><strong>{{@topic.last_poster_username}} </strong></div>
                         <div style="font-size: 0.6rem; color: gray;">
@@ -97,8 +108,6 @@ export default class TopicLink extends Component {
                 <div class="save-icon">
                     {{icon "bookmark"}}
                 </div>
-                
-                
             </div>
             {{~! no whitespace ~}}
         </PluginOutlet>
