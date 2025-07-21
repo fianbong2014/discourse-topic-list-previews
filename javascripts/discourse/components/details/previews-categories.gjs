@@ -5,7 +5,7 @@ export default class PreviewsCategories extends Component {
         const topic = this.args.topic;
 
         console.log("ค่าที่ได้รับใน topic:", topic);
-
+        console.log('topic.tags: ', topic.tags)
         if (!topic || !topic.category_id || !topic.category_name || topic.tags) {
             return "ไม่ระบุหมวดหมู่";
         }
@@ -17,9 +17,9 @@ export default class PreviewsCategories extends Component {
     
     <template>
         <div class="categories">
-          🗂️ หมวดหมู่:
+          🗂️ categories:
           {{#each this.categories as |category|}}
-            <span class="badge-f">{{category}}</span>
+            <span class="adge-categories">{{category}}</span>
           {{/each}}
         </div>
     </template>
