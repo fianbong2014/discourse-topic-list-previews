@@ -8,7 +8,7 @@ export default class TopicLink extends Component {
 
     constructor() {
         super(...arguments);
-        console.log("Topic Data:", this.args.topic); // args.topic คือ @topic
+        //console.log("Topic Data:", this.args.topic); // args.topic คือ @topic
 
         this.creator = this.args.topic.posters[0];
         this.loadBadges();
