@@ -95,6 +95,7 @@ export default apiInitializer("0.8", (api) => {
   api.registerValueTransformer(
     "topic-list-item-class",
     ({ value, context }) => {
+      console.log('registerValueTransformer : ' , value)
       if (topicListPreviewsService.displayTiles) {
         value.push("tiles-style");
       }

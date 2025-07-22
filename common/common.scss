@@ -30,19 +30,19 @@
       }
     }
     
-    &.has-excerpt{
-      .topic-details,
-      a.title,
-      a.title:not(.badge-notification),
-      .topic-featured-link,
-      .topic-excerpt,
-      .discourse-tag,
-      .topic-views,
-      .badge-posts,
-      .like-count {
-        color: #ccc;
-      }
-    }
+    //&.has-excerpt{
+    //  .topic-details,
+    //  a.title,
+    //  a.title:not(.badge-notification),
+    //  .topic-featured-link,
+    //  .topic-excerpt,
+    //  .discourse-tag,
+    //  .topic-views,
+    //  .badge-posts,
+    //  .like-count {
+    //    color: #ccc;
+    //  }
+    //}
   }
 
   &.dark-text {
@@ -78,19 +78,19 @@
       }
     }
 
-    &.has-excerpt{
-      .topic-details,
-      a.title,
-      a.title:not(.badge-notification),
-      .topic-featured-link,
-      .topic-excerpt,
-      .discourse-tag,
-      .topic-views,
-      .badge-posts,
-      .like-count {
-        color: #ccc;
-      }
-    }
+    //&.has-excerpt{
+    //  .topic-details,
+    //  a.title,
+    //  a.title:not(.badge-notification),
+    //  .topic-featured-link,
+    //  .topic-excerpt,
+    //  .discourse-tag,
+    //  .topic-views,
+    //  .badge-posts,
+    //  .like-count {
+    //    color: #ccc;
+    //  }
+    //}
   }
 }
 
@@ -161,6 +161,9 @@ td {
   }
 
   tbody {
+    .topic-list-item-separator {
+      display: none;
+    }
     display: grid;
     gap: 4px;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -177,6 +180,10 @@ td {
     //grid-row-end: span 16 !important;
 
     // เมื่อมี class has-excerpt
+    //&.has-excerpt {
+    //  grid-row-end: auto;
+    //}
+    
     //&.has-excerpt {
     //  grid-row-end: span 18 !important;
     //  &.has-thumpnail {
@@ -208,7 +215,7 @@ td {
     box-sizing: border-box;
     cursor: pointer;
     border-radius: 3px;
-    //grid-row-end: span 44;
+    grid-row-end: span 44;
     display: flex;
     flex-direction: column;
 
